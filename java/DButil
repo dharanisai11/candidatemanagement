@@ -1,0 +1,30 @@
+package com.wipro.candidate.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DbUtil {
+	public static Connection getDbConn() throws Exception
+	{
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection conn  = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","Saiyadav143@#");
+			System.out.println("Success");
+			return conn;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null; 
+	}
+	public static void main(String a[]) throws Exception
+	{
+		DbUtil.getDbConn();
+	}
+}
+ 	
